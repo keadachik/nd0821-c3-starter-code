@@ -30,4 +30,4 @@ jobs:
     - name: Run tests
       run: |
         cd starter/starter
-        pytest test_ml_functions.py -v
+        PYTHONPATH=. pytest test_ml_functions.py -v
