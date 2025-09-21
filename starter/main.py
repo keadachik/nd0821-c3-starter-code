@@ -113,6 +113,9 @@ except FileNotFoundError as e:
         if os.path.exists("../data/census.csv"):
             # Running from starter directory
             subprocess.run([sys.executable, "starter/train_model.py"], check=True, cwd="..")
+        elif os.path.exists("data/census.csv"):
+            # Running from starter directory (Render environment)
+            subprocess.run([sys.executable, "starter/train_model.py"], check=True)
         else:
             # Running from starter/starter directory
             subprocess.run([sys.executable, "train_model.py"], check=True)
