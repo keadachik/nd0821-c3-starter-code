@@ -8,7 +8,13 @@ from ml.model import compute_model_metrics
 # Add the necessary imports for the starter code.
 from ml.data import process_data
 # Add code to load in the data.
-data = pd.read_csv('../data/census.csv')
+import os
+if os.path.exists('../data/census.csv'):
+    data = pd.read_csv('../data/census.csv')
+elif os.path.exists('data/census.csv'):
+    data = pd.read_csv('data/census.csv')
+else:
+    raise FileNotFoundError("Could not find census.csv in ../data/ or data/")
 # Optional enhancement, use K-fold cross validation instead of
 # a train-test split.
 train, test = train_test_split(data, test_size=0.20)
@@ -38,13 +44,30 @@ X_test, y_test, _, _ = process_data(
 )
 # Train and save a model.
 model = train_model(X_train, y_train)
-save_model(model, '../model/model.pkl')
+
+# Determine model save path
+if os.path.exists('../model'):
+    model_path = '../model/model.pkl'
+    encoder_path = '../model/encoder.pkl'
+    lb_path = '../model/lb.pkl'
+elif os.path.exists('model'):
+    model_path = 'model/model.pkl'
+    encoder_path = 'model/encoder.pkl'
+    lb_path = 'model/lb.pkl'
+else:
+    # Create model directory
+    os.makedirs('model', exist_ok=True)
+    model_path = 'model/model.pkl'
+    encoder_path = 'model/encoder.pkl'
+    lb_path = 'model/lb.pkl'
+
+save_model(model, model_path)
 
 # Save encoders for API use
 import pickle
-with open('../model/encoder.pkl', 'wb') as f:
+with open(encoder_path, 'wb') as f:
     pickle.dump(encoder, f)
-with open('../model/lb.pkl', 'wb') as f:
+with open(lb_path, 'wb') as f:
     pickle.dump(lb, f)
 
 # compute the slice metrics
@@ -63,7 +86,12 @@ print("Slice results:")
 print(slice_results)
 
 print("saving the slice results")
-save_slice_output(slice_results, "education", "../slice_output.txt")
+# Determine slice output path
+if os.path.exists('..'):
+    slice_output_path = "../slice_output.txt"
+else:
+    slice_output_path = "slice_output.txt"
+save_slice_output(slice_results, "education", slice_output_path)
 
 print("Training and slice evaluation complete!")
 
