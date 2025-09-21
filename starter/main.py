@@ -82,6 +82,9 @@ app = FastAPI(title="Census Income Prediction API")
 
 # Load model and encoders at startup
 import os
+import subprocess
+import sys
+
 model_path = "model/model.pkl"
 encoder_path = "model/encoder.pkl"
 lb_path = "model/lb.pkl"
@@ -104,9 +107,31 @@ try:
     print("All models loaded successfully!")
 except FileNotFoundError as e:
     print(f"File not found: {e}")
-    model = None
-    encoder = None
-    lb = None
+    print("Training model...")
+    try:
+        # Train model if files don't exist
+        if os.path.exists("../data/census.csv"):
+            # Running from starter directory
+            subprocess.run([sys.executable, "starter/train_model.py"], check=True, cwd="..")
+        else:
+            # Running from starter/starter directory
+            subprocess.run([sys.executable, "train_model.py"], check=True)
+        
+        # Try loading again
+        print(f"Loading model from {model_path}...")
+        model = load_model(model_path)
+        print(f"Loading encoder from {encoder_path}...")
+        with open(encoder_path, "rb") as f:
+            encoder = pickle.load(f)
+        print(f"Loading label binarizer from {lb_path}...")
+        with open(lb_path, "rb") as f:
+            lb = pickle.load(f)
+        print("All models loaded successfully after training!")
+    except Exception as train_error:
+        print(f"Error training model: {train_error}")
+        model = None
+        encoder = None
+        lb = None
 except Exception as e:
     print(f"Error loading models: {e}")
     model = None
