@@ -40,6 +40,13 @@ X_test, y_test, _, _ = process_data(
 model = train_model(X_train, y_train)
 save_model(model, '../model/model.pkl')
 
+# Save encoders for API use
+import pickle
+with open('../model/encoder.pkl', 'wb') as f:
+    pickle.dump(encoder, f)
+with open('../model/lb.pkl', 'wb') as f:
+    pickle.dump(lb, f)
+
 # compute the slice metrics
 print("making predictions on the test data")
 y_pred = inference(model, X_test)

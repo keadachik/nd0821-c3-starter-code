@@ -70,6 +70,23 @@ def save_model(model, model_path):
     with open(model_path, 'wb') as f:
         pickle.dump(model, f)
 
+def load_model(model_path):
+    """
+    Loads a machine learning model from a file.
+    
+    Inputs
+    ------
+    model_path : str
+        Path to the saved model file.
+    Returns
+    -------
+    model
+        Loaded machine learning model.
+    """
+    with open(model_path, 'rb') as f:
+        model = pickle.load(f)
+    return model
+
 def compute_slice_metrics(df, feature, y_true, y_pred):
     """
     Computes the performance of the model on a slice of the data.
