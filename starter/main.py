@@ -81,14 +81,25 @@ class PersonData(BaseModel):
 app = FastAPI(title="Census Income Prediction API")
 
 # Load model and encoders at startup
+import os
+model_path = "model/model.pkl"
+encoder_path = "model/encoder.pkl"
+lb_path = "model/lb.pkl"
+
+# If running from starter/starter directory, adjust paths
+if os.path.exists("../model/model.pkl"):
+    model_path = "../model/model.pkl"
+    encoder_path = "../model/encoder.pkl"
+    lb_path = "../model/lb.pkl"
+
 try:
-    print("Loading model from model/model.pkl...")
-    model = load_model("model/model.pkl")
-    print("Loading encoder from model/encoder.pkl...")
-    with open("model/encoder.pkl", "rb") as f:
+    print(f"Loading model from {model_path}...")
+    model = load_model(model_path)
+    print(f"Loading encoder from {encoder_path}...")
+    with open(encoder_path, "rb") as f:
         encoder = pickle.load(f)
-    print("Loading label binarizer from model/lb.pkl...")
-    with open("model/lb.pkl", "rb") as f:
+    print(f"Loading label binarizer from {lb_path}...")
+    with open(lb_path, "rb") as f:
         lb = pickle.load(f)
     print("All models loaded successfully!")
 except FileNotFoundError as e:
