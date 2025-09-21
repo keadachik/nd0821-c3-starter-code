@@ -1,18 +1,30 @@
 name: CI
-on: [push]
+
+on: [push, pull_request]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    
     - name: Set up Python 3.8
       uses: actions/setup-python@v4
       with:
         python-version: 3.8
+    
     - name: Install dependencies
       run: |
-        pip install pytest flake8 fastapi uvicorn pandas scikit-learn
+        cd starter
+        pip install -r requirements.txt
+    
     - name: Run flake8
-      run: flake8 .
+      run: |
+        cd starter
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=79 --statistics
+    
     - name: Run tests
-      run: pytest
+      run: |
+        cd starter
+        pytest starter/test_ml_functions.py -v
