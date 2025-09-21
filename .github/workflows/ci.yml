@@ -1,30 +1,20 @@
-name: CI
+The job failed because the flake8 command was not found. This means flake8 is not installed in the environment before it's used.
 
-on: [push, pull_request]
+**Solution:**  
+Add a step to install flake8 before running it in your workflow file (.github/workflows/ci.yml).  
+For example, update your workflow steps to include:
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.8
-    
-    - name: Install dependencies
-      run: |
-        cd starter
-        pip install -r requirements.txt
-    
-    - name: Run flake8
-      run: |
-        cd starter
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=79 --statistics
-    
-    - name: Run tests
-      run: |
-        cd starter
-        pytest starter/test_ml_functions.py -v
+```yaml
+- name: Install flake8
+  run: pip install flake8
+
+- name: Run flake8
+  run: |
+    flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+    flake8 . --count --exit-zero --max-complexity=10 --max-line-length=79 --statistics
+```
+
+Place the "Install flake8" step before any step that uses flake8.
+
+**Summary:**  
+Install flake8 using pip before running flake8 commands in your workflow. This will fix the "command not found" error and allow your job to proceed.
