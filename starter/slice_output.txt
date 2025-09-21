@@ -1,39 +1,102 @@
 Slice performance for feature: education
 ==================================================
 
-education: HS-grad
-Precision: 0.6071
-Recall: 0.4084
-Fbeta: 0.4883
-Accuracy: 0.8626
-Count: 2074
+education: 10th
+Precision: 0.8000
+Recall: 0.4444
+Fbeta: 0.5714
+Accuracy: 0.9688
+Count: 192
 
 --------------------------------------------------
 
-education: 12th
-Precision: 0.5000
-Recall: 0.3333
-Fbeta: 0.4000
-Accuracy: 0.9674
-Count: 92
+education: HS-grad
+Precision: 0.5943
+Recall: 0.3706
+Fbeta: 0.4565
+Accuracy: 0.8558
+Count: 2080
+
+--------------------------------------------------
+
+education: Bachelors
+Precision: 0.7558
+Recall: 0.7238
+Fbeta: 0.7395
+Accuracy: 0.7862
+Count: 1071
+
+--------------------------------------------------
+
+education: Assoc-acdm
+Precision: 0.7091
+Recall: 0.6190
+Fbeta: 0.6610
+Accuracy: 0.8283
+Count: 233
+
+--------------------------------------------------
+
+education: Prof-school
+Precision: 0.8625
+Recall: 0.8415
+Fbeta: 0.8519
+Accuracy: 0.7838
+Count: 111
+
+--------------------------------------------------
+
+education: Some-college
+Precision: 0.6450
+Recall: 0.5302
+Fbeta: 0.5820
+Accuracy: 0.8569
+Count: 1495
+
+--------------------------------------------------
+
+education: Doctorate
+Precision: 0.7692
+Recall: 0.8696
+Fbeta: 0.8163
+Accuracy: 0.7273
+Count: 66
+
+--------------------------------------------------
+
+education: Assoc-voc
+Precision: 0.5789
+Recall: 0.5410
+Fbeta: 0.5593
+Accuracy: 0.7945
+Count: 253
+
+--------------------------------------------------
+
+education: Masters
+Precision: 0.8073
+Recall: 0.8201
+Fbeta: 0.8136
+Accuracy: 0.8022
+Count: 359
 
 --------------------------------------------------
 
 education: 5th-6th
 Precision: 1.0000
-Recall: 0.5000
-Fbeta: 0.6667
-Accuracy: 0.9600
-Count: 75
+Recall: 0.0000
+Fbeta: 0.0000
+Accuracy: 0.9500
+Count: 60
 
 --------------------------------------------------
 
-education: Bachelors
-Precision: 0.7455
-Recall: 0.7734
-Fbeta: 0.7592
-Accuracy: 0.8024
-Count: 1063
+education: 7th-8th
+Precision: 1.0000
+Recall: 0.1429
+Fbeta: 0.2500
+Accuracy: 0.9568
+Count: 139
 
 --------------------------------------------------
 
@@ -41,107 +104,44 @@ education: 9th
 Precision: 1.0000
 Recall: 0.2500
 Fbeta: 0.4000
-Accuracy: 0.9722
-Count: 108
-
---------------------------------------------------
-
-education: Masters
-Precision: 0.8195
-Recall: 0.8528
-Fbeta: 0.8358
-Accuracy: 0.8114
-Count: 350
-
---------------------------------------------------
-
-education: 10th
-Precision: 0.3333
-Recall: 0.1818
-Fbeta: 0.2353
-Accuracy: 0.9301
-Count: 186
-
---------------------------------------------------
-
-education: Prof-school
-Precision: 0.8229
-Recall: 0.9518
-Fbeta: 0.8827
-Accuracy: 0.8220
-Count: 118
-
---------------------------------------------------
-
-education: Some-college
-Precision: 0.6754
-Recall: 0.5185
-Fbeta: 0.5867
-Accuracy: 0.8554
-Count: 1501
+Accuracy: 0.9681
+Count: 94
 
 --------------------------------------------------
 
 education: 11th
 Precision: 1.0000
-Recall: 0.4000
-Fbeta: 0.5714
-Accuracy: 0.9617
-Count: 235
+Recall: 0.2500
+Fbeta: 0.4000
+Accuracy: 0.9593
+Count: 221
 
 --------------------------------------------------
 
-education: Assoc-acdm
-Precision: 0.7353
-Recall: 0.4545
-Fbeta: 0.5618
-Accuracy: 0.8079
-Count: 203
-
---------------------------------------------------
-
-education: 7th-8th
-Precision: 0.6667
+education: 12th
+Precision: 1.0000
 Recall: 0.2222
-Fbeta: 0.3333
-Accuracy: 0.9252
-Count: 107
-
---------------------------------------------------
-
-education: Assoc-voc
-Precision: 0.7593
-Recall: 0.5256
-Fbeta: 0.6212
-Accuracy: 0.8188
-Count: 276
-
---------------------------------------------------
-
-education: Doctorate
-Precision: 0.7973
-Recall: 0.9077
-Fbeta: 0.8489
-Accuracy: 0.7692
-Count: 91
+Fbeta: 0.3636
+Accuracy: 0.9195
+Count: 87
 
 --------------------------------------------------
 
 education: 1st-4th
 Precision: 1.0000
-Recall: 0.0000
-Fbeta: 0.0000
-Accuracy: 0.9630
-Count: 27
+Recall: 0.3333
+Fbeta: 0.5000
+Accuracy: 0.9524
+Count: 42
 
 --------------------------------------------------
 
 education: Preschool
-Precision: 1.0000
+Precision: 0.0000
 Recall: 1.0000
-Fbeta: 1.0000
-Accuracy: 1.0000
-Count: 7
+Fbeta: 0.0000
+Accuracy: 0.9000
+Count: 10
 
 --------------------------------------------------
 

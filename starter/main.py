@@ -82,12 +82,22 @@ app = FastAPI(title="Census Income Prediction API")
 
 # Load model and encoders at startup
 try:
+    print("Loading model from model/model.pkl...")
     model = load_model("model/model.pkl")
+    print("Loading encoder from model/encoder.pkl...")
     with open("model/encoder.pkl", "rb") as f:
         encoder = pickle.load(f)
+    print("Loading label binarizer from model/lb.pkl...")
     with open("model/lb.pkl", "rb") as f:
         lb = pickle.load(f)
-except FileNotFoundError:
+    print("All models loaded successfully!")
+except FileNotFoundError as e:
+    print(f"File not found: {e}")
+    model = None
+    encoder = None
+    lb = None
+except Exception as e:
+    print(f"Error loading models: {e}")
     model = None
     encoder = None
     lb = None
